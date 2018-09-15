@@ -1,0 +1,46 @@
+body{
+	margin: 0 auto;
+	font-family: Arial, sans-serif 
+}
+
+.header{
+	background-color: #4267b2;
+	width: 100%;
+	height: 80px;
+}
+
+.menu{
+	background-color: #312260;
+	height: 532px;
+	width: 15%;
+	display: inline-block;
+	float: left;
+}
+
+.main{
+	width: 85%;
+	height: 532px;
+	float: right;
+	overflow-y: scroll;
+}
+
+.footer{
+	background-color: #4267b2;
+	width: 100%;
+	height: 50px;
+	position: relative;
+	margin-top: 532px;
+	text-align: center;
+}
+
+.footer-watermark{
+	color: white;
+	font-weight: bold;
+	margin-top: 12px;
+	display: inline-block;
+}
+
+table{
+	border-collapse: collapse;
+	width: 90%;
+}
