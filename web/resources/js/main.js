@@ -1,44 +1,56 @@
-var a = 5;
-var b = 4;
-var name = 'Memmed';
-var cond = true;
 
 $(function () {
 
-    $('#idButtonSum').click(function () {
-        sum();
+    $('#idButtonStudent').click(function () {
+        studentButtonClick();
+    });
+
+    $('#idButtonTeacher').click(function () {
+        teacherButtonClick();
+    });
+
+    $('#idButtonCourse').click(function () {
+        courseButtonClick();
     });
 
     $('#idButtonTest').click(function () {
-        var usernameValue = $('#idUsername').val();
-        alert(usernameValue);
-        $('#idUsername').val('TEST');
+        testButtonClick();
     });
-
 
 });
 
 
-function sum() {
-    var c = a + b;
-    console.log('Cem = ' + c);
-    return c;
+function studentButtonClick() {
+    $('#idDivStudentData').show();
+    $('#idDivTeacherData').hide();
+    $('#idDivCourseData').hide();
 }
 
-function test(a, c, v) {
-    var z = sum();
-    var j = a + c;
-    console.log('J = ' + j);
-
+function teacherButtonClick() {
+    $('#idDivStudentData').hide();
+    $('#idDivTeacherData').show();
+    $('#idDivCourseData').hide();
 }
 
-function test2() {
-    test(1, 2, 'salam');
+function courseButtonClick() {
+    $('#idDivStudentData').hide();
+    $('#idDivTeacherData').hide();
+    $('#idDivCourseData').show();
 }
 
+function testButtonClick() {
+    var name = $('#idInputName').val();
+    var surname = $('#idInputSurname').val();
 
-function onSumButtonClick() {
-
+    $.ajax({
+        url: '/cs?action=sayHello',
+        type: 'POST',
+        data: 'name='+name+'&surname='+surname,
+        dataType: 'html',
+        success: function (data) {
+            console.log(data);
+        }
+    });
 }
 
 

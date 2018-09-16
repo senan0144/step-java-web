@@ -30,43 +30,15 @@ public class ControllerServlet extends HttpServlet {
             System.out.println(action);
         }
 
-        if (action.equals("register")) {
+        if (action.equals("sayHello")){
+            String name = request.getParameter("name");
+            String surname = request.getParameter("surname");
 
-            String firstName = request.getParameter("firstName");
-            String lastName = request.getParameter("lastName");
+            System.out.println("name = " + name);
+            System.out.println("surname = " + surname);
 
-            if (!ValidationUtil.validate(firstName, lastName)) {
-                request.setAttribute("message", "Zehmet olmasa butun xanalari doldurun");
-                request.getRequestDispatcher("WEB-INF/view/index.jsp").forward(request, response);
-                return;
-            }
+            request.getRequestDispatcher("/WEB-INF/view/result.jsp").forward(request,response);
 
-
-            System.out.println("firstName = " + firstName);
-            System.out.println("lastName = " + lastName);
-
-            request.setAttribute("message", "Qeydiyyat ugurla bitdi");
-            request.getRequestDispatcher("WEB-INF/view/result.jsp").forward(request, response);
-
-        } else if (action.equals("login")) {
-
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-
-            if (!ValidationUtil.validate(username, password)) {
-                request.setAttribute("message", "Zehmet olmasa butun xanalari doldurun");
-                request.getRequestDispatcher("WEB-INF/view/index.jsp").forward(request, response);
-                return;
-            }
-
-            if (username.equals("user") && password.equals("123")) {
-                request.setAttribute("message", "Salam " + username + "!");
-                request.getRequestDispatcher("WEB-INF/view/result.jsp").forward(request, response);
-            } else {
-                request.setAttribute("message", "Username ve ya Parol sehvdir");
-                request.getRequestDispatcher("WEB-INF/view/index.jsp").forward(request, response);
-
-            }
         }
 
 

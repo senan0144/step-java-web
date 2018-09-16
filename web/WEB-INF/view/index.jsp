@@ -18,99 +18,27 @@
 <div class="header"></div>
 <div class="menu">
 
-    <button id="idButtonSum">Sum</button>
-    <button id="idButtonTest">Test</button>
+    <button id="idButtonStudent" class="menu-button">Student</button>
+    <button id="idButtonTeacher" class="menu-button">Teacher</button>
+    <button id="idButtonCourse" class="menu-button">Course</button>
+    <button id="idButtonTest" class="menu-button">Test</button>
 
 </div>
 
 
 <div class="main">
     <div style="margin: 20px">
-        <!-- <table border="1px">
-        <thead>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Address</th>
-            <th>Phone number</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Memmed</td>
-                <td>Eliyev</td>
-                <td>Baki</td>
-                <td>123-123-23</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Gulnar</td>
-                <td>Veliyeva</td>
-                <td>Sumqayit</td>
-                <td>123-32-32</td>
-            </tr>
-        </tbody>
-    </table> -->
-        <%
-            if (request.getAttribute("message") != null) {
-        %>
 
-        <span style="color: red"> <%=request.getAttribute("message")%> </span>
-        <br>
-
-        <%
-            }
-        %>
-        <form action="/cs?action=register" method="post">
-
-            <span>First name:</span>
-            <input type="text" placeholder="Enter your first name" name="firstName" >
-            <br><br>
-            <span>Last name:</span>
-            <input type="text" placeholder="Enter your last name" name="lastName" >
-            <br><br>
-            <span>Password:</span>
-            <input type="Password" placeholder="***********" name="password">
-            <br><br>
-            <span>Date of birth:</span>
-            <input type="date" name="dob">
-            <br><br>
-            <span>Gender:</span>
-            <input type="radio" name="gender" value="male" checked><span>Male</span>
-            <input type="radio" name="gender" value="female"><span>Female</span>
-            <br><br>
-            <span>Languages:</span>
-            <input type="checkbox" name="lang" value="aze"><span>Aze</span>
-            <input type="checkbox" name="lang" value="eng"><span>Eng</span>
-            <input type="checkbox" name="lang" value="ru"><span>Rus</span>
-            <br><br>
-            <span>Address:</span>
-            <select name="address">
-                <option value="">Select address...</option>
-                <option value="1">Baku</option>
-                <option value="2">Sumgait</option>
-                <option value="3">Ganja</option>
-            </select>
-            <br><br>
-            <span>Description:</span>
-            <textarea cols="20" rows="4" name="desc"></textarea>
-            <br><br>
-            <input type="reset" value="Temizle">
-            <input type="submit" value="Gonder">
-            <input type="button" value="Button" id="registerButtonId">
-        </form>
-
-
-        <form action="/cs?action=login" method="post">
-            <span>Username:</span>
-            <input type="text" placeholder="Enter your username" name="username" id="idUsername">
-            <br><br>
-            <span>Password:</span>
-            <input type="Password" placeholder="***********" name="password">
-            <br>
-            <input type="submit" value="Login">
-        </form>
-        <br><br><br>
+        <div id="idDivStudentData" hidden>
+            <input type="text" id="idInputName" placeholder="name">
+            <input type="text" id="idInputSurname" placeholder="surname">
+        </div>
+        <div id="idDivTeacherData" hidden>
+            Teacher table
+        </div>
+        <div id="idDivCourseData" hidden>
+            Course table
+        </div>
 
 
 
