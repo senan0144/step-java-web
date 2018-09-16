@@ -13,17 +13,26 @@ $(function () {
         courseButtonClick();
     });
 
-    $('#idButtonTest').click(function () {
-        testButtonClick();
-    });
 
 });
 
 
 function studentButtonClick() {
-    $('#idDivStudentData').show();
-    $('#idDivTeacherData').hide();
-    $('#idDivCourseData').hide();
+
+    $.ajax({
+        url: '/cs?action=getAllStudent',
+        type: 'GET',
+        dataType: 'html',
+        success: function (data) {
+            $('#idDivStudentData').html(data);
+
+            $('#idDivStudentData').show();
+            $('#idDivTeacherData').hide();
+            $('#idDivCourseData').hide();
+        }
+    });
+
+
 }
 
 function teacherButtonClick() {
@@ -38,19 +47,5 @@ function courseButtonClick() {
     $('#idDivCourseData').show();
 }
 
-function testButtonClick() {
-    var name = $('#idInputName').val();
-    var surname = $('#idInputSurname').val();
-
-    $.ajax({
-        url: '/cs?action=sayHello',
-        type: 'POST',
-        data: 'name='+name+'&surname='+surname,
-        dataType: 'html',
-        success: function (data) {
-            console.log(data);
-        }
-    });
-}
 
 

@@ -10,8 +10,11 @@
 <head>
     <title>$Title$</title>
     <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
 
     <script type="text/javascript" src="../../resources/js/external/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../../resources/js/main.js"></script>
 </head>
 <body>
@@ -21,7 +24,6 @@
     <button id="idButtonStudent" class="menu-button">Student</button>
     <button id="idButtonTeacher" class="menu-button">Teacher</button>
     <button id="idButtonCourse" class="menu-button">Course</button>
-    <button id="idButtonTest" class="menu-button">Test</button>
 
 </div>
 
@@ -30,8 +32,7 @@
     <div style="margin: 20px">
 
         <div id="idDivStudentData" hidden>
-            <input type="text" id="idInputName" placeholder="name">
-            <input type="text" id="idInputSurname" placeholder="surname">
+
         </div>
         <div id="idDivTeacherData" hidden>
             Teacher table

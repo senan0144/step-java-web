@@ -1,5 +1,10 @@
 package com.step.course.servlet;
 
+import com.step.course.dao.StudentDao;
+import com.step.course.dao.StudentDaoImpl;
+import com.step.course.model.Student;
+import com.step.course.service.StudentService;
+import com.step.course.service.StudentServiceImpl;
 import com.step.course.util.ValidationUtil;
 
 import javax.servlet.ServletException;
@@ -8,9 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "ControllerServlet", urlPatterns = "/cs")
 public class ControllerServlet extends HttpServlet {
+
+    private StudentService studentService = new StudentServiceImpl(new StudentDaoImpl());
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -30,14 +38,11 @@ public class ControllerServlet extends HttpServlet {
             System.out.println(action);
         }
 
-        if (action.equals("sayHello")){
-            String name = request.getParameter("name");
-            String surname = request.getParameter("surname");
+        if (action.equals("getAllStudent")){
+            List<Student> list = studentService.getAllStudent();
+            request.setAttribute("studentList", list);
 
-            System.out.println("name = " + name);
-            System.out.println("surname = " + surname);
-
-            request.getRequestDispatcher("/WEB-INF/view/result.jsp").forward(request,response);
+            request.getRequestDispatcher("/WEB-INF/fragments/student-table.jsp").forward(request,response);
 
         }
 
