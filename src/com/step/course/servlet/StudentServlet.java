@@ -48,8 +48,6 @@ public class StudentServlet extends HttpServlet {
             if (!result){
                 throw new ServletException();
             }
-
-
         }
 
 

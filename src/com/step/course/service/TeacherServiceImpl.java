@@ -17,4 +17,9 @@ public class TeacherServiceImpl implements TeacherService{
         return teacherDao.getAllTeacher();
     }
 
+    @Override
+    public boolean deleteTeacher(int idTeacher) {
+        return teacherDao.deleteTeacher(idTeacher);
+    }
+
 }

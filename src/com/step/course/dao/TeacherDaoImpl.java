@@ -13,7 +13,7 @@ import java.util.List;
 public class TeacherDaoImpl implements TeacherDao {
 
     private final String GET_ALL_TEACHER_SQL = "select t.id_teacher, t.first_name, t.last_name, c.id_course, c.name, c.desc, c.duration from teacher t inner join course c on t.id_course=c.id_course";
-
+    private final String DELETE_TEACHER = "delete from teacher where id_teacher=?";
 
     @Override
     public List<Teacher> getAllTeacher() {
@@ -49,6 +49,27 @@ public class TeacherDaoImpl implements TeacherDao {
         }
 
         return list;
+    }
+
+    @Override
+    public boolean deleteTeacher(int idTeacher) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        boolean result = false;
+
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(DELETE_TEACHER);
+            ps.setInt(1, idTeacher);
+            ps.executeUpdate();
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            DbUtil.closeAll(con,ps);
+        }
+
+        return result;
     }
 
 }

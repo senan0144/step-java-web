@@ -12,6 +12,7 @@ import java.util.List;
 public class CourseDaoImpl implements CourseDao {
 
     private final String GET_ALL_COURSE_SQL = "select * from course";
+    private final String DELETE_COURSE = "delete from course where id_course=?";
 
 
     @Override
@@ -42,6 +43,27 @@ public class CourseDaoImpl implements CourseDao {
         }
 
         return list;
+    }
+
+    @Override
+    public boolean deleteCourse(int idCourse) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        boolean result = false;
+
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(DELETE_COURSE);
+            ps.setInt(1, idCourse);
+            ps.executeUpdate();
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            DbUtil.closeAll(con,ps);
+        }
+
+        return result;
     }
 
 }

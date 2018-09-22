@@ -17,6 +17,7 @@
         <th>Surname</th>
         <th>Course name</th>
         <th>Course duration</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -28,6 +29,9 @@
         <td>${teacher.lastName}</td>
         <td>${teacher.course.name}</td>
         <td>${teacher.course.duration}</td>
+        <td><a href="#" onclick="deleteTeacher('${teacher.id}')" style="text-align: center">
+            <i class="fas fa-user-times" style="display: block"></i>
+        </a></td>
     </tr>
 </c:forEach>
 

@@ -7,5 +7,6 @@ import java.util.List;
 public interface TeacherService {
 
     List<Teacher> getAllTeacher();
+    boolean deleteTeacher(int idTeacher);
 
 }

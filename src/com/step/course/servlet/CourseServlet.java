@@ -36,10 +36,16 @@ public class CourseServlet extends HttpServlet {
         if (action.equals("getAllCourse")) {
             List<Course> list = courseService.getAllCourse();
             request.setAttribute("courseList", list);
-
             request.getRequestDispatcher("/WEB-INF/fragments/course-table.jsp").forward(request, response);
 
+        }else if (action.equals("deleteCourse")){
+            int id = Integer.parseInt(request.getParameter("id"));
 
+            boolean result = courseService.deleteCourse(id);
+
+            if (!result){
+                throw new ServletException();
+            }
         }
 
     }

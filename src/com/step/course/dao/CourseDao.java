@@ -7,5 +7,6 @@ import java.util.List;
 public interface CourseDao {
 
     List<Course> getAllCourse();
+    boolean deleteCourse(int idCourse);
 
 }

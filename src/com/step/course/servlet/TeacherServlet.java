@@ -38,7 +38,14 @@ public class TeacherServlet extends HttpServlet {
             request.setAttribute("teacherList", list);
 
             request.getRequestDispatcher("/WEB-INF/fragments/teacher-table.jsp").forward(request, response);
+        }else if (action.equals("deleteTeacher")){
+            int id = Integer.parseInt(request.getParameter("id"));
 
+            boolean result = teacherService.deleteTeacher(id);
+
+            if (!result){
+                throw new ServletException();
+            }
         }
 
     }

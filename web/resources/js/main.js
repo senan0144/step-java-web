@@ -85,7 +85,43 @@ function deleteStudent(id) {
         });
     }
 
+function deleteTeacher(id) {
+    var cond = confirm("Are you sure?");
 
+    if (cond) {
+        $.ajax({
+           url: '/ts?action=deleteTeacher',
+           type: 'POST',
+           data: 'id='+id,
+            success: function () {
+                alert('Teacher deleted!');
+                getTeacherTable();
+            },
+            error: function () {
+                alert('Error while deleting teacher!');
+            }
+        });
+    }
+}
+
+function deleteCourse(id) {
+    var cond = confirm("Are you sure?");
+
+    if (cond) {
+        $.ajax({
+            url: '/cs?action=deleteCourse',
+            type: 'POST',
+            data: 'id='+id,
+            success: function () {
+                alert('Course deleted!');
+                getCourseTable();
+            },
+            error: function () {
+                alert('Error while deleting course!');
+            }
+        });
+    }
+}
 
 }
 

@@ -17,4 +17,7 @@ public class CourseServiceImpl implements CourseService {
         return courseDao.getAllCourse();
     }
 
+    @Override
+    public boolean deleteCourse(int idCourse) { return courseDao.deleteCourse(idCourse); }
+
 }
