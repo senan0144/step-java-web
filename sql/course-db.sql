@@ -55,10 +55,10 @@ CREATE TABLE `student` (
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
-  `id_course` int(11) DEFAULT NULL,
+  `id_teacher` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_student`),
-  KEY `fk_student_course_idx` (`id_course`),
-  CONSTRAINT `fk_student_course` FOREIGN KEY (`id_course`) REFERENCES `course` (`id_course`)
+  KEY `fk_student_teacher_idx` (`id_teacher`),
+  CONSTRAINT `fk_student_teacher` FOREIGN KEY (`id_teacher`) REFERENCES `teacher` (`id_teacher`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -68,7 +68,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'Aslan','Ehmedov','1997-01-02',1),(2,'Fatime','Gurbanova','1998-09-26',1),(3,'Elman','Qehremanov','1996-07-11',1),(4,'Memmed','Eliyev','1994-01-13',2),(5,'Hesen','Memmedov','1990-03-11',2),(6,'Eli','Ehmedov','1993-11-14',3),(7,'Huseyn','Namazov','1990-01-01',3);
+INSERT INTO `student` VALUES (1,'Aslan','Ehmedov','1997-01-02',1),(2,'Fatime','Gurbanova','1998-09-26',1),(3,'Elman','Qehremanov','1996-07-11',1),(4,'Memmed','Eliyev','1994-01-13',2),(5,'Hesen','Memmedov','1990-03-11',2);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `teacher` (
   PRIMARY KEY (`id_teacher`),
   KEY `fk_teacher_course_idx` (`id_course`),
   CONSTRAINT `fk_teacher_course` FOREIGN KEY (`id_course`) REFERENCES `course` (`id_course`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
-INSERT INTO `teacher` VALUES (1,'Coshqun','Huseynov',1),(2,'Ehmed','Ehmedov',2),(3,'Ekber','Eliyev',3);
+INSERT INTO `teacher` VALUES (1,'Coshqun','Huseynov',1),(2,'Ehmed','Ehmedov',2),(3,'Ekber','Eliyev',3),(4,'Eli','Memmedov',1);
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -109,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-16 13:03:24
+-- Dump completed on 2018-09-22 12:56:29

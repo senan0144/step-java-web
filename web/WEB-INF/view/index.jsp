@@ -9,13 +9,14 @@
 <html>
 <head>
     <title>$Title$</title>
-    <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
-    <script type="text/javascript" src="../../resources/js/external/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/external/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="../../resources/js/main.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 </head>
 <body>
 <div class="header"></div>
@@ -35,10 +36,10 @@
 
         </div>
         <div id="idDivTeacherData" hidden>
-            Teacher table
+
         </div>
         <div id="idDivCourseData" hidden>
-            Course table
+
         </div>
 
 

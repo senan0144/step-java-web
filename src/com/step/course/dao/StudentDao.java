@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface StudentDao {
     List<Student> getAllStudent();
+    boolean deleteStudent(int idStudent);
 }

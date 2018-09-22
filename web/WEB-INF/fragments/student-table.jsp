@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.step.course.model.Student" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -17,27 +18,29 @@
         <th>Date of Birth</th>
         <th>Course</th>
         <th>Teacher</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
-    <%
-        List<Student> list = (List<Student>) request.getAttribute("studentList");
-        for (Student s : list) {
-    %>
+
+<c:forEach var="student" items="${studentList}">
 
     <tr>
-        <td><%=s.getId()%></td>
-        <td><%=s.getFirstName()%></td>
-        <td><%=s.getLastName()%></td>
-        <td><%=s.getDateOfBirth()%></td>
-        <td><%=s.getCourse().getName()%></td>
-        <td><%=s.getCourse().getTeacher().getFirstName()+" "+s.getCourse().getTeacher().getLastName()%></td>
+        <td>${student.id}</td>
+        <td>${student.firstName}</td>
+        <td>${student.lastName}</td>
+        <td>${student.dateOfBirth}</td>
+        <td>${student.teacher.course.name}</td>
+        <td>${student.teacher.firstName} ${student.teacher.lastName}</td>
+        <td><a href="#" onclick="deleteStudent('${student.id}')" style="text-align: center">
+            <i class="fas fa-user-times" style="display: block"></i>
+        </a></td>
     </tr>
 
 
-    <%
-        }
-    %>
+</c:forEach>
+
+
 
 
     </tbody>

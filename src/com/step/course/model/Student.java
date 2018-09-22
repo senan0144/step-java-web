@@ -7,24 +7,17 @@ public class Student {
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
-    private Course course;
+    private Teacher teacher;
 
     public Student() {
     }
 
-    public Student(int id, String firstName, String lastName, LocalDate dateOfBirth, Course course) {
+    public Student(int id, String firstName, String lastName, LocalDate dateOfBirth, Teacher teacher) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.course = course;
-    }
-
-    public Student(String firstName, String lastName, LocalDate dateOfBirth, Course course) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.course = course;
+        this.teacher = teacher;
     }
 
     public int getId() {
@@ -59,12 +52,12 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Course getCourse() {
-        return course;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     @Override
@@ -74,7 +67,7 @@ public class Student {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
-                ", course=" + course +
+                ", teacher=" + teacher +
                 '}';
     }
 }

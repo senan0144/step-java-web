@@ -2,25 +2,25 @@
 $(function () {
 
     $('#idButtonStudent').click(function () {
-        studentButtonClick();
+        getStudentTable();
     });
 
     $('#idButtonTeacher').click(function () {
-        teacherButtonClick();
+        getTeacherTable();
     });
 
     $('#idButtonCourse').click(function () {
-        courseButtonClick();
+        getCourseTable();
     });
 
 
 });
 
 
-function studentButtonClick() {
+function getStudentTable() {
 
     $.ajax({
-        url: '/cs?action=getAllStudent',
+        url: '/ss?action=getAllStudent',
         type: 'GET',
         dataType: 'html',
         success: function (data) {
@@ -35,16 +35,58 @@ function studentButtonClick() {
 
 }
 
-function teacherButtonClick() {
-    $('#idDivStudentData').hide();
-    $('#idDivTeacherData').show();
-    $('#idDivCourseData').hide();
+function getTeacherTable() {
+
+    $.ajax({
+        url: '/ts?action=getAllTeacher',
+        type: 'GET',
+        dataType: 'html',
+        success: function (data) {
+            $('#idDivTeacherData').html(data);
+
+            $('#idDivStudentData').hide();
+            $('#idDivTeacherData').show();
+            $('#idDivCourseData').hide();
+        }
+    });
 }
 
-function courseButtonClick() {
-    $('#idDivStudentData').hide();
-    $('#idDivTeacherData').hide();
-    $('#idDivCourseData').show();
+function getCourseTable() {
+
+    $.ajax({
+        url: '/cs?action=getAllCourse',
+        type: 'GET',
+        dataType: 'html',
+        success: function (data) {
+            $('#idDivCourseData').html(data);
+
+            $('#idDivStudentData').hide();
+            $('#idDivTeacherData').hide();
+            $('#idDivCourseData').show();
+        }
+    });
+}
+
+function deleteStudent(id) {
+    var cond = confirm('Are you sure?');
+
+    if(cond){
+        $.ajax({
+            url: '/ss?action=deleteStudent',
+            type: 'POST',
+            data: 'id='+id,
+            success: function () {
+                alert('Student deleted!');
+                getStudentTable();
+            },
+            error: function () {
+                alert('Error while deleting student!');
+            }
+        });
+    }
+
+
+
 }
 
 
