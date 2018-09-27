@@ -48,6 +48,8 @@ public class StudentServlet extends HttpServlet {
             if (!result){
                 throw new ServletException();
             }
+        }else if (action.equals("getStudentForm")){
+            request.getRequestDispatcher("/WEB-INF/fragments/student-form.jsp").forward(request, response);
         }
 
 

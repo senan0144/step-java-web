@@ -5,24 +5,21 @@ public class Course {
     private String name;
     private String desc;
     private int duration;
-    private Teacher teacher;
 
     public Course() {
     }
 
-    public Course(int id, String name, String desc, int duration, Teacher teacher) {
+    public Course(int id, String name, String desc, int duration) {
         this.id = id;
         this.name = name;
         this.desc = desc;
         this.duration = duration;
-        this.teacher = teacher;
     }
 
-    public Course(String name, String desc, int duration, Teacher teacher) {
+    public Course(String name, String desc, int duration) {
         this.name = name;
         this.desc = desc;
         this.duration = duration;
-        this.teacher = teacher;
     }
 
     public int getId() {
@@ -57,14 +54,6 @@ public class Course {
         this.duration = duration;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
     @Override
     public String toString() {
         return "Course{" +
@@ -72,7 +61,6 @@ public class Course {
                 ", name='" + name + '\'' +
                 ", desc='" + desc + '\'' +
                 ", duration=" + duration +
-                ", teacher=" + teacher +
                 '}';
     }
 }

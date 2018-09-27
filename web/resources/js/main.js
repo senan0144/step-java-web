@@ -1,3 +1,4 @@
+var newData;
 
 $(function () {
 
@@ -13,6 +14,9 @@ $(function () {
         getCourseTable();
     });
 
+    $('#idButtonNewData').click(function () {
+       addNewData();
+    });
 
 });
 
@@ -32,7 +36,7 @@ function getStudentTable() {
         }
     });
 
-
+    newData = "student";
 }
 
 function getTeacherTable() {
@@ -49,6 +53,8 @@ function getTeacherTable() {
             $('#idDivCourseData').hide();
         }
     });
+
+    newData = "teacher";
 }
 
 function getCourseTable() {
@@ -65,16 +71,18 @@ function getCourseTable() {
             $('#idDivCourseData').show();
         }
     });
+
+    newData = "course";
 }
 
 function deleteStudent(id) {
     var cond = confirm('Are you sure?');
 
-    if(cond){
+    if (cond) {
         $.ajax({
             url: '/ss?action=deleteStudent',
             type: 'POST',
-            data: 'id='+id,
+            data: 'id=' + id,
             success: function () {
                 alert('Student deleted!');
                 getStudentTable();
@@ -84,6 +92,7 @@ function deleteStudent(id) {
             }
         });
     }
+}
 
 function deleteTeacher(id) {
     var cond = confirm("Are you sure?");
@@ -123,7 +132,70 @@ function deleteCourse(id) {
     }
 }
 
+function addNewData() {
+
+    $( "#idDivAddNewData" ).dialog({
+        resizable: false,
+        height: 600,
+        width: 800,
+        modal: true,
+        buttons: {
+            "Add data": function() {
+                $( this ).dialog( "close" );
+            },
+            Cancel: function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+
+    switch(newData) {
+        case "student":
+            $.ajax({
+                url: '/cs?action=getStudentForm',
+                type: 'GET',
+                data: 'html',
+                success: function (data) {
+                    $('#idDivAddNewData').html(data);
+
+                    $('#idDivStudentData').hide();
+                    $('#idDivTeacherData').hide();
+                    $('#idDivCourseData').hide();
+                    $('#idDivAddNewData').show();
+                }
+            });
+            break;
+        case "teacher":
+            $.ajax({
+                url: '/cs?action=addTeacher',
+                type: 'GET',
+                data: 'html',
+                success: function (data) {
+                    $('#idDivAddNewData').html(data);
+
+                    $('#idDivStudentData').hide();
+                    $('#idDivTeacherData').hide();
+                    $('#idDivCourseData').hide();
+                    $('#idDivAddNewData').show();
+                }
+            });
+            break;
+        case "course":
+            $.ajax({
+                url: '/cs?action=addCourse',
+                type: 'GET',
+                data: 'html',
+                success: function (data) {
+                    $('#idDivAddNewData').html(data);
+
+                    $('#idDivStudentData').hide();
+                    $('#idDivTeacherData').hide();
+                    $('#idDivCourseData').hide();
+                    $('#idDivAddNewData').show();
+                }
+            });
+            break;
+        default:
+            alert("Select student, teacher or course!");
+    }
 }
-
-
-

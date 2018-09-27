@@ -32,8 +32,8 @@
         <td>${student.dateOfBirth}</td>
         <td>${student.teacher.course.name}</td>
         <td>${student.teacher.firstName} ${student.teacher.lastName}</td>
-        <td><a href="#" onclick="deleteStudent('${student.id}')" style="text-align: center">
-            <i class="fas fa-user-times" style="display: block"></i>
+        <td><a href="#" onclick="deleteStudent('${student.id}');" style="text-align: center">
+            <i class="fas fa-user-minus" style="display: block;"></i>
         </a></td>
     </tr>
 

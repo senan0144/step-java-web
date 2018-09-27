@@ -27,8 +27,8 @@
         <td>${course.name}</td>
         <td>${course.desc}</td>
         <td>${course.duration}</td>
-        <td><a href="#" onclick="deleteCourse('${course.id}')" style="text-align: center">
-            <i class="fas fa-user-times" style="display: block"></i>
+        <td><a href="#" onclick="deleteCourse('${course.id}');" style="text-align: center">
+            <i class="fas fa-folder-minus" style="display: block"></i>
         </a></td>
     </tr>
 

@@ -65,3 +65,22 @@ table{
 .menu-button:focus{
 	outline: 0;
 }
+
+.btnAdd {
+	background-color: DodgerBlue; /* Blue background */
+	border: none; /* Remove borders */
+	border-radius: 50px;
+	color: white; /* White text */
+	padding: 16px 16px; /* Some padding */
+	font-size: 16px; /* Set a font size */
+	cursor: pointer; /* Mouse pointer on hover */
+	margin: 14px;
+}
+
+.btnAdd:hover {
+	background-color: RoyalBlue;
+}
+
+.btnAdd:focus {
+	outline: 0;
+}
