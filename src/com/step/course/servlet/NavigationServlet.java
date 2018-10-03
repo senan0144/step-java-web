@@ -6,6 +6,7 @@ import com.step.course.model.Student;
 import com.step.course.model.Teacher;
 import com.step.course.service.*;
 import com.step.course.util.ValidationUtil;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,6 +38,26 @@ public class NavigationServlet extends HttpServlet {
 
         if (request.getParameter("action") != null) {
             action = request.getParameter("action");
+        }
+
+        if (action.equals("getNewStudentJsp")) {
+            List<Course> list = courseService.getAllCourse();
+            request.setAttribute("courseList", list);
+
+            request.getRequestDispatcher("/WEB-INF/fragments/new-student-dialog.jsp").forward(request, response);
+
+        } else if (action.equals("getStudentById")) {
+            int idStudent = Integer.parseInt(request.getParameter("id"));
+            Student student = studentService.getStudentById(idStudent);
+            List<Course> courseList = courseService.getAllCourse();
+            List<Teacher> teacherList = teacherService.getTeachersByCourseId(student.getTeacher().getCourse().getId());
+
+            request.setAttribute("student", student);
+            request.setAttribute("courseList", courseList);
+            request.setAttribute("teacherList" ,teacherList);
+
+            request.getRequestDispatcher("/WEB-INF/fragments/update-student-dialog.jsp").forward(request, response);
+
         }
 
 

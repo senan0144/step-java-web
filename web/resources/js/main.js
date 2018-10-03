@@ -15,7 +15,19 @@ $(function () {
     });
 
     $('#idButtonNewData').click(function () {
-       addNewData();
+        switch (newData) {
+            case "student":
+                openNewStudentDialog();
+                //title set olunmalidir..
+                break;
+            case "teacher":
+                break;
+            case "course":
+                break;
+            default:
+                alert("Please select action from menu!")
+                break;
+        }
     });
 
 });
@@ -132,70 +144,64 @@ function deleteCourse(id) {
     }
 }
 
-function addNewData() {
-
-    $( "#idDivAddNewData" ).dialog({
-        resizable: false,
-        height: 600,
-        width: 800,
-        modal: true,
-        buttons: {
-            "Add data": function() {
-                $( this ).dialog( "close" );
-            },
-            Cancel: function() {
-                $( this ).dialog( "close" );
-            }
+function openNewStudentDialog() {
+    $.ajax({
+        url: '/ns?action=getNewStudentJsp',
+        type: 'GET',
+        dataType: 'html',
+        success: function (data) {
+            $('#idDialogNewData').html(data);
+            $('#idDialogNewData').dialog('open');
         }
     });
+}
 
-    switch(newData) {
-        case "student":
-            $.ajax({
-                url: '/cs?action=getStudentForm',
-                type: 'GET',
-                data: 'html',
-                success: function (data) {
-                    $('#idDivAddNewData').html(data);
+function addStudent() {
+    var firstName = $('#idInputStudentFirstName').val();
+    var lastName = $('#idInputStudentLastName').val();
+    var dateOfBirth = $('#idInputStudentDateOfBirth').val();
+    var idTeacher = $('#idSelectStudentTeacher').val();
 
-                    $('#idDivStudentData').hide();
-                    $('#idDivTeacherData').hide();
-                    $('#idDivCourseData').hide();
-                    $('#idDivAddNewData').show();
-                }
-            });
-            break;
-        case "teacher":
-            $.ajax({
-                url: '/cs?action=addTeacher',
-                type: 'GET',
-                data: 'html',
-                success: function (data) {
-                    $('#idDivAddNewData').html(data);
+    $.ajax({
+        url: '/ss?action=addStudent',
+        type: 'POST',
+        data: 'firstName=' + firstName + '&lastName=' + lastName + '&dateOfBirth=' + dateOfBirth + '&idTeacher=' + idTeacher,
+        success: function () {
+            alert('Student added!');
+            $('#idDialogNewData').dialog("close");
+            getStudentTable();
+        }
+    });
+}
 
-                    $('#idDivStudentData').hide();
-                    $('#idDivTeacherData').hide();
-                    $('#idDivCourseData').hide();
-                    $('#idDivAddNewData').show();
-                }
-            });
-            break;
-        case "course":
-            $.ajax({
-                url: '/cs?action=addCourse',
-                type: 'GET',
-                data: 'html',
-                success: function (data) {
-                    $('#idDivAddNewData').html(data);
+function getUpdateStudentJsp(id) {
+    $.ajax({
+        url: '/ns?action=getStudentById',
+        type: 'GET',
+        data: "id="+id,
+        dataType: 'html',
+        success: function (data) {
+            $('#idDialogUpdateData').html(data);
+            $('#idDialogUpdateData').dialog('open');
+        }
+    });
+}
 
-                    $('#idDivStudentData').hide();
-                    $('#idDivTeacherData').hide();
-                    $('#idDivCourseData').hide();
-                    $('#idDivAddNewData').show();
-                }
-            });
-            break;
-        default:
-            alert("Select student, teacher or course!");
-    }
+function updateStudent() {
+    var firstName = $('#idInputStudentFirstName').val();
+    var lastName = $('#idInputStudentLastName').val();
+    var dateOfBirth = $('#idInputStudentDateOfBirth').val();
+    var idTeacher = $('#idSelectStudentTeacher').val();
+    var idStudent = $('#idSelectStudentId').val();
+
+    $.ajax({
+        url: '/ss?action=updateStudent',
+        type: 'POST',
+        data: 'id=' + idStudent + '&firstName=' + firstName + '&lastName=' + lastName + '&dateOfBirth=' + dateOfBirth + '&idTeacher=' + idTeacher,
+        success: function () {
+            alert("Student updated!");
+            $('#idDialogUpdateData').dialog("close");
+            getStudentTable();
+        }
+    });
 }

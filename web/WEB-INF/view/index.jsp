@@ -20,24 +20,41 @@
     <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 
-    <%--<script>--%>
-        <%--$( function() {--%>
-            <%--$( "#dialog-confirm" ).dialog({--%>
-                <%--resizable: false,--%>
-                <%--height: "auto",--%>
-                <%--width: 400,--%>
-                <%--modal: true,--%>
-                <%--buttons: {--%>
-                    <%--"Delete all items": function() {--%>
-                        <%--$( this ).dialog( "close" );--%>
-                    <%--},--%>
-                    <%--Cancel: function() {--%>
-                        <%--$( this ).dialog( "close" );--%>
-                    <%--}--%>
-                <%--}--%>
-            <%--});--%>
-        <%--} );--%>
-    <%--</script>--%>
+    <script>
+        $( function() {
+            $( "#idDialogNewData" ).dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                autoOpen: false,
+                buttons: {
+                    "Add": function() {
+                        addStudent();
+                    },
+                    Cancel: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+
+            $( "#idDialogUpdateData" ).dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                autoOpen: false,
+                buttons: {
+                    "Update": function() {
+                        updateStudent();
+                    },
+                    Cancel: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+        } );
+    </script>
 
 </head>
 
@@ -67,7 +84,11 @@
 
         </div>
 
-        <div id="idDivAddNewData" title="Add new data" hidden>
+        <div id="idDialogNewData" hidden>
+
+        </div>
+
+        <div id="idDialogUpdateData" hidden>
 
         </div>
 

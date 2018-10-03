@@ -22,4 +22,9 @@ public class TeacherServiceImpl implements TeacherService{
         return teacherDao.deleteTeacher(idTeacher);
     }
 
+    @Override
+    public List<Teacher> getTeachersByCourseId(int courseId) {
+        return teacherDao.getTeachersByCourseId(courseId);
+    }
+
 }

@@ -4,6 +4,7 @@ import com.step.course.dao.TeacherDaoImpl;
 import com.step.course.model.Teacher;
 import com.step.course.service.TeacherService;
 import com.step.course.service.TeacherServiceImpl;
+import org.json.JSONArray;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +39,7 @@ public class TeacherServlet extends HttpServlet {
             request.setAttribute("teacherList", list);
 
             request.getRequestDispatcher("/WEB-INF/fragments/teacher-table.jsp").forward(request, response);
+
         }else if (action.equals("deleteTeacher")){
             int id = Integer.parseInt(request.getParameter("id"));
 
@@ -46,6 +48,16 @@ public class TeacherServlet extends HttpServlet {
             if (!result){
                 throw new ServletException();
             }
+
+        }else if (action.equals("getTeachersByCourseId")){
+            int id = Integer.parseInt(request.getParameter("id"));
+
+            List<Teacher> list = teacherService.getTeachersByCourseId(id);
+
+            JSONArray jsonArray = new JSONArray(list);
+            response.setContentType("application/json");
+            response.getWriter().write(jsonArray.toString());
+
         }
 
     }

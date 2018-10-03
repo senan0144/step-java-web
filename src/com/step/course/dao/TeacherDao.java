@@ -7,6 +7,9 @@ import java.util.List;
 public interface TeacherDao {
 
     List<Teacher> getAllTeacher();
+
     boolean deleteTeacher(int idTeacher);
+
+    List<Teacher> getTeachersByCourseId(int courseId);
 
 }

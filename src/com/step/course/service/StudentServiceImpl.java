@@ -22,4 +22,21 @@ public class StudentServiceImpl implements StudentService {
     public boolean deleteStudent(int idStudent) {
         return studentDao.deleteStudent(idStudent);
     }
+
+    @Override
+    public boolean addStudent(Student student) {
+        return studentDao.addStudent(student);
+    }
+
+    @Override
+    public Student getStudentById(int id) {
+        return studentDao.getStudentById(id);
+    }
+
+    @Override
+    public boolean updateStudent(Student student) {
+        return studentDao.updateStudent(student);
+    }
+
+
 }

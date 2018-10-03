@@ -19,12 +19,12 @@
         <th>Course</th>
         <th>Teacher</th>
         <th>Delete</th>
+        <th>Update</th>
     </tr>
     </thead>
     <tbody>
 
 <c:forEach var="student" items="${studentList}">
-
     <tr>
         <td>${student.id}</td>
         <td>${student.firstName}</td>
@@ -35,9 +35,10 @@
         <td><a href="#" onclick="deleteStudent('${student.id}');" style="text-align: center">
             <i class="fas fa-user-minus" style="display: block;"></i>
         </a></td>
+        <td><a href="#" onclick="getUpdateStudentJsp('${student.id}');" style="text-align: center">
+            <i class="fas fa-pencil-alt" style="display: block"></i>
+        </a></td>
     </tr>
-
-
 </c:forEach>
 
 
